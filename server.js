@@ -34,7 +34,7 @@ app.use(passport.initialize());
 
 // Pass the 'passport' node_module as 
 // an arg into the passport config file
-require('./config/passport.js')(passport);
+require('./config/passport')(passport);
 
 // Use the following API endpoints
 // passing in the route config
