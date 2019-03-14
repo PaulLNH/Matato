@@ -22,14 +22,31 @@ class Login extends Component {
     this.setState({ [event.target.name]: event.target.value });
   };
 
+  componentDidMount() {
+    if (this.props.auth.isAuthenticated) {
+      this.props.history.push('/dashboard');
+    }
+  }
+
+  componentWillReceiveProps = nextProps => {
+    if (nextProps.auth.isAuthenticated) {
+      this.props.history.push('/dashboard');
+    }
+
+    if (nextProps.errors) {
+      this.setState({ errors: nextProps.errors });
+    }
+  }
+
   onSubmit = event => {
     event.preventDefault();
-    const user = {
+    
+    const userData = {
       email: this.state.email,
       password: this.state.password
     };
 
-    console.log(user);
+    this.props.loginUser(userData);
   };
 
   render() {
@@ -97,4 +114,4 @@ const mapStateToProps = (state) => ({
   errors: state.errors,
 });
 
-export default connect(null, { loginUser })(Login);
+export default connect(mapStateToProps, { loginUser })(Login);
