@@ -4,7 +4,6 @@ import jwt_decode from "jwt-decode";
 
 import { GET_ERRORS } from "./types";
 import { SET_CURRENT_USER } from "./types";
-import store from "../store";
 
 // Register User
 export const registerUser = (userData, history) => dispatch => {
