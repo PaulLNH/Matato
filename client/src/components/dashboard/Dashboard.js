@@ -5,6 +5,8 @@ import { connect } from "react-redux";
 import { getCurrentProfile, deleteAccount } from "../../actions/profileActions";
 import Spinner from "../common/Spinner";
 import ProfileActions from "./ProfileActions";
+import Experience from "./Experience";
+import Education from "./Education";
 
 class Dashboard extends Component {
   componentDidMount() {
@@ -12,7 +14,6 @@ class Dashboard extends Component {
   }
 
   onDeleteClick(e) {
-    e.preventDefault();
     this.props.deleteAccount();
   }
 
@@ -22,20 +23,19 @@ class Dashboard extends Component {
 
     let dashboardContent;
 
-    if ((profile === null) | loading) {
+    if (profile === null || loading) {
       dashboardContent = <Spinner />;
     } else {
-      // Chec if logged in user has profile data
+      // Check if logged in user has profile data
       if (Object.keys(profile).length > 0) {
-        // User has a profile
         dashboardContent = (
           <div>
             <p className="lead text-muted">
-              Welcome,{" "}
-              <Link to={`/profile/${profile.handle}`}>{user.name}</Link>.
+              Welcome <Link to={`/profile/${profile.handle}`}>{user.name}</Link>
             </p>
             <ProfileActions />
-            {/* TODO: exp and edu */}
+            <Experience experience={profile.experience} />
+            <Education education={profile.education} />
             <div style={{ marginBottom: "60px" }} />
             <button
               onClick={this.onDeleteClick.bind(this)}
@@ -49,11 +49,8 @@ class Dashboard extends Component {
         // User is logged in but has no profile
         dashboardContent = (
           <div>
-            <p className="lead text-muted">Welcome, {user.name}.</p>
-            <p>
-              You have not yet setup a profile, please add some info about
-              yourself.
-            </p>
+            <p className="lead text-muted">Welcome {user.name}</p>
+            <p>You have not yet setup a profile, please add some info</p>
             <Link to="/create-profile" className="btn btn-lg btn-info">
               Create Profile
             </Link>
@@ -67,7 +64,7 @@ class Dashboard extends Component {
         <div className="container">
           <div className="row">
             <div className="col-md-12">
-              <h1 className="display4">Dashboard</h1>
+              <h1 className="display-4">Dashboard</h1>
               {dashboardContent}
             </div>
           </div>

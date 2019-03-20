@@ -32,9 +32,9 @@ module.exports = function validateProfileInput(data) {
     errors.status = `Status field is required`;
   }
 
-  // Check password field to see if it is empty
+  // Check skills field to see if it is empty
   if (Validator.isEmpty(data.skills)) {
-    errors.skills = `Skills field is required`;
+    errors.skills = 'Skills field is required';
   }
 
   // First checks to makesure the field is not empty
