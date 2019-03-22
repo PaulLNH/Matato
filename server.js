@@ -38,7 +38,7 @@ require('./config/passport')(passport);
 
 // Use the following API endpoints
 // passing in the route config
-app.use('/api/user', user);
+app.use('/api/users', user);
 app.use('/api/profile', profile);
 app.use('/api/posts', posts);
 

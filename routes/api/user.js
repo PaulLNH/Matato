@@ -27,7 +27,7 @@ const validateLoginInput = require('../../validation/login');
 const ONE_HOUR = 3600;
 
 /**
- * @route   GET api/user/test
+ * @route   GET api/users/test
  * @desc    Tests user route
  * @access  Public
  */
@@ -36,7 +36,7 @@ router.get('/test', (req, res) => res.json({
 }));
 
 /**
- * @route   GET api/user/register
+ * @route   GET api/users/register
  * @desc    Register new user
  * @access  Public
  */
@@ -100,7 +100,7 @@ router.post('/register', (req, res) => {
 });
 
 /**
- * @route   GET api/user/login
+ * @route   GET api/users/login
  * @desc    Login User / Returing JWT Token
  * @access  Public
  */
@@ -171,7 +171,7 @@ router.post('/login', (req, res) => {
 });
 
 /**
- * @route   GET api/user/current
+ * @route   GET api/users/current
  * @desc    Return current user
  * @access  Private
  */

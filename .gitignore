@@ -62,4 +62,4 @@ typings/
 
 # db authentication keys
 /config/keys.js
-keys.js
+/config/keys_dev.js

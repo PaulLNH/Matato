@@ -95,11 +95,11 @@ router.get('/handle/:handle', (req, res) => {
 });
 
 /**
- * @route   GET api/profile/user/:user_id
+ * @route   GET api/profile/users/:user_id
  * @desc    Get profile by user ID
  * @access  Public
  */
-router.get('/user/:user_id', (req, res) => {
+router.get('/users/:user_id', (req, res) => {
   const errors = {};
   // Set default error for this route, if no match on id throw error
   errors.noprofile = `There is no profile for this user`;
